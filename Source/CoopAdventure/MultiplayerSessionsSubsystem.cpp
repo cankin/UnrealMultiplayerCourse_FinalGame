@@ -2,6 +2,8 @@
 
 
 #include "MultiplayerSessionsSubsystem.h"
+#include "OnlineSubsystem.h"
+
 
 void PrintString(const FString& string)
 {
@@ -13,15 +15,28 @@ void PrintString(const FString& string)
 
 UMultiplayerSessionsSubsystem::UMultiplayerSessionsSubsystem()
 {
-	PrintString("MSS Constructor");
+	//PrintString("MSS Constructor");
 }
 
 void UMultiplayerSessionsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
-	PrintString("MSS Initialize");
+	//PrintString("MSS Initialize");
+	IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get();
+
+	if (OnlineSubsystem)
+	{
+		FString SubsystemName = OnlineSubsystem->GetSubsystemName().ToString();
+		PrintString(SubsystemName);
+
+		SessionInterface = OnlineSubsystem->GetSessionInterface();
+		if (SessionInterface.IsValid())
+		{
+			PrintString("Session Interface is valid!");
+		}
+	}
 }
 
 void UMultiplayerSessionsSubsystem::Deinitialize()
 {
-	UE_LOG(LogTemp, Warning, TEXT("MSS deinitialize"));
+	//UE_LOG(LogTemp, Warning, TEXT("MSS deinitialize"));
 }
