@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "Interfaces/OnlineSessionInterface.h"
+#include "OnlineSubsystem.h"
 #include "MultiplayerSessionsSubsystem.generated.h"
 
 /**
@@ -22,4 +23,11 @@ public:
 	void Deinitialize() override;
 
 	IOnlineSessionPtr SessionInterface;
+	IOnlineSubsystem* OnlineSubsystem;
+
+	UFUNCTION(BlueprintCallable)	
+	void CreateServer(FString ServerName);
+
+	UFUNCTION(BlueprintCallable)
+	void FindServer(FString ServerName);
 };
