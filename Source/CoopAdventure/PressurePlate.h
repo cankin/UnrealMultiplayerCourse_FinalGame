@@ -23,4 +23,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	USceneComponent* RootComponent;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UStaticMeshComponent* TriggerShape;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UStaticMeshComponent* Mesh;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	bool Activated;
 };
