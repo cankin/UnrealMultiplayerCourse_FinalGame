@@ -24,5 +24,23 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	FVector StartPoint;
+	FVector EndPoint;
+
+	bool ArePointsSet;
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	bool AllTriggerActorsTriggered;
+
+	UPROPERTY(EditAnywhere)
+	float MoveTime;
+
+	UPROPERTY(EditAnywhere)
+	TArray<AActor*> TriggerActors;
+	
+	UPROPERTY(VisibleAnywhere)
+	int ActivatedTriggerCount;
+
+	UFUNCTION()
+	void SetPoints(FVector Point1, FVector Point2);
 		
 };
