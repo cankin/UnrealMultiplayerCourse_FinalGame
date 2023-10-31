@@ -40,7 +40,12 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	int ActivatedTriggerCount;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void SetPoints(FVector Point1, FVector Point2);
-		
+
+	UFUNCTION()
+	void OnPressurePlateActivated();
+
+	UFUNCTION()
+	void OnPressurePlateDeactivated();
 };
