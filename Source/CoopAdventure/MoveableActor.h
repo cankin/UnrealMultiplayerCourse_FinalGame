@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Transporter.h"
+#include "Components/ArrowComponent.h"
 #include "GameFramework/Actor.h"
 #include "MoveableActor.generated.h"
 
@@ -23,4 +25,17 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	USceneComponent* Root;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UArrowComponent* Point1;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UArrowComponent* Point2;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UStaticMeshComponent* Mesh;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UTransporter* Transporter;
 };
