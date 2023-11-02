@@ -2,6 +2,7 @@
 
 
 #include "CollectableKey.h"
+#include "CoopAdventureCharacter.h"
 #include "Net/UnrealNetwork.h"
 
 // Sets default values
@@ -48,10 +49,33 @@ void ACollectableKey::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if(HasAuthority())
+	{
+		TArray<AActor*> OverlappingActors;
+		Capsule->GetOverlappingActors(OverlappingActors, ACoopAdventureCharacter::StaticClass());
+		
+		if(!OverlappingActors.IsEmpty())
+		{
+			if(!IsCollected)
+			{
+				IsCollected = true;
+				OnRep_IsCollected();
+			}
+		}
+	}
 }
 
-void ACollectableKey::OnRepIsCollected()
+void ACollectableKey::OnRep_IsCollected()
 {
-	
+	if(HasAuthority())
+	{
+		UE_LOG(LogTemp, Display, TEXT("OnRep_IsCollected called on server"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Display, TEXT("OnRep_IsCollected called on client"));
+	}
+
+	Mesh->SetVisibility(!IsCollected);
 }
 

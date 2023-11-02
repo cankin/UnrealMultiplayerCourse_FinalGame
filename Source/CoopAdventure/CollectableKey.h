@@ -36,11 +36,11 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UCapsuleComponent* Capsule;
 
-	UPROPERTY(ReplicatedUsing = OnRepIsCollected)
+	UPROPERTY(ReplicatedUsing = OnRep_IsCollected)
 	bool IsCollected;
 
 	UFUNCTION()
-	void OnRepIsCollected();
+	void OnRep_IsCollected();
 
 	
 };
