@@ -27,5 +27,6 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Speed;
 	
-	
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	bool bCanSpin;
 };
