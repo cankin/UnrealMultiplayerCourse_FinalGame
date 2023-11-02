@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/Actor.h"
+#include "Components/AudioComponent.h"
 #include "CollectableKey.generated.h"
 
 UCLASS()
@@ -25,8 +26,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	USceneComponent* Root;
 
@@ -35,6 +35,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UCapsuleComponent* Capsule;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UAudioComponent* CollectAudio;
 
 	UPROPERTY(ReplicatedUsing = OnRep_IsCollected)
 	bool IsCollected;

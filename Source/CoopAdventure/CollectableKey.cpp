@@ -22,6 +22,10 @@ ACollectableKey::ACollectableKey()
 	Mesh->SetIsReplicated(true);
 	Mesh->SetCollisionProfileName(FName("OverlapAllDynamic"));
 
+	CollectAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("CollectAudio"));
+	CollectAudio->SetupAttachment(Root);
+	CollectAudio->SetAutoActivate(false);
+
 	Capsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
 	Capsule->SetupAttachment(Root);
 	Capsule->SetIsReplicated(true);
@@ -77,5 +81,6 @@ void ACollectableKey::OnRep_IsCollected()
 	}
 
 	Mesh->SetVisibility(!IsCollected);
+	CollectAudio->Play();
 }
 
