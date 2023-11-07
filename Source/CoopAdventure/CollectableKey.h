@@ -6,6 +6,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/Actor.h"
 #include "Components/AudioComponent.h"
+#include "RotatorComponent.h"
 #include "CollectableKey.generated.h"
 
 UCLASS()
@@ -38,6 +39,9 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UAudioComponent* CollectAudio;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	URotatorComponent* RotatorComponent;
 
 	UPROPERTY(ReplicatedUsing = OnRep_IsCollected)
 	bool IsCollected;

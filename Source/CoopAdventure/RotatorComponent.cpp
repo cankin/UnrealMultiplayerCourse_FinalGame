@@ -12,6 +12,7 @@ URotatorComponent::URotatorComponent()
 
 	bCanSpin = true;
 	Speed = 3.0f;
+	MeshName = "Mesh";
 }
 
 
@@ -19,7 +20,17 @@ URotatorComponent::URotatorComponent()
 void URotatorComponent::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	GetOwner()->GetComponents(UStaticMeshComponent::StaticClass(), MeshArray);
+
+	for(int i = 0; i < MeshArray.Num(); i++)
+	{
+		if(MeshArray[i]->GetName().Equals(MeshName))
+		{
+			Mesh = Cast<UStaticMeshComponent>(MeshArray[i]);
+			break;
+		}
+	}
 }
 
 
@@ -32,7 +43,10 @@ void URotatorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 	{
 		if(bCanSpin)
 		{
-			GetOwner()->AddActorLocalRotation(FRotator(0.0f, Speed * DeltaTime, 0.0f));
+			if(Mesh)
+			{
+				Mesh->AddRelativeRotation(FRotator(0.0f, Speed * DeltaTime, 0.0f));
+			}
 		}
 	}
 }

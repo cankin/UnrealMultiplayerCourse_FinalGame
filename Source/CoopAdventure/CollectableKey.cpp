@@ -32,6 +32,9 @@ ACollectableKey::ACollectableKey()
 	Capsule->SetCollisionProfileName(FName("OverlapAllDynamic"));
 	Capsule->SetCapsuleHalfHeight(150.0f);
 	Capsule->SetCapsuleRadius(100.0f);
+
+	RotatorComponent = CreateDefaultSubobject<URotatorComponent>(TEXT("RotatorComponent"));
+	RotatorComponent->Speed = 100.0f;
 }
 
 void ACollectableKey::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

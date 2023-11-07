@@ -29,4 +29,13 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	bool bCanSpin;
+
+	UPROPERTY()
+	TArray<UActorComponent*> MeshArray;
+
+	UPROPERTY()
+	UStaticMeshComponent* Mesh;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FString MeshName;
 };
