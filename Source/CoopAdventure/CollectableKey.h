@@ -3,11 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CollectableKeyHolder.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/Actor.h"
 #include "Components/AudioComponent.h"
 #include "RotatorComponent.h"
 #include "CollectableKey.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FCollectableKeyOnCollected);
 
 UCLASS()
 class COOPADVENTURE_API ACollectableKey : public AActor
@@ -27,6 +30,9 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	ACollectableKeyHolder* KeyHolderRef;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	USceneComponent* Root;
@@ -48,6 +54,8 @@ public:
 
 	UFUNCTION()
 	void OnRep_IsCollected();
+	
+	FCollectableKeyOnCollected OnCollected;
 
 	
 };

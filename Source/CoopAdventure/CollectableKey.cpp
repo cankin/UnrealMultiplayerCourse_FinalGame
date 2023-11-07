@@ -77,6 +77,11 @@ void ACollectableKey::OnRep_IsCollected()
 	if(HasAuthority())
 	{
 		UE_LOG(LogTemp, Display, TEXT("OnRep_IsCollected called on server"));
+
+		if(IsCollected)
+		{
+			OnCollected.Broadcast();
+		}
 	}
 	else
 	{
@@ -85,5 +90,13 @@ void ACollectableKey::OnRep_IsCollected()
 
 	Mesh->SetVisibility(!IsCollected);
 	CollectAudio->Play();
+
+	if(IsCollected)
+	{
+		if(KeyHolderRef)
+		{
+			KeyHolderRef->ActivateKeyMesh();
+		}
+	}
 }
 

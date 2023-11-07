@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CollectableKey.h"
 #include "GameFramework/Actor.h"
 #include "RotatorComponent.h"
 #include "CollectableKeyHolder.generated.h"
