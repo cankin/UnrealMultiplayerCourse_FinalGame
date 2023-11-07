@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
 #include "WinArea.generated.h"
 
@@ -22,5 +23,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UBoxComponent* WinAreaBox;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	bool WinCondition;
 
 };
