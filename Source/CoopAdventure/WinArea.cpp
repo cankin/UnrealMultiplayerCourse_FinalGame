@@ -40,7 +40,7 @@ void AWinArea::Tick(float DeltaTime)
 
 			if(WinCondition)
 			{
-				UE_LOG(LogTemp, Display, TEXT("Win!"));
+				//UE_LOG(LogTemp, Display, TEXT("Win!"));
 
 				MulticastRPCWin();
 			}

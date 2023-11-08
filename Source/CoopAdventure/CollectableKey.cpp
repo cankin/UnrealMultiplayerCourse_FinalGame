@@ -76,7 +76,7 @@ void ACollectableKey::OnRep_IsCollected()
 {
 	if(HasAuthority())
 	{
-		UE_LOG(LogTemp, Display, TEXT("OnRep_IsCollected called on server"));
+		//UE_LOG(LogTemp, Display, TEXT("OnRep_IsCollected called on server"));
 
 		if(IsCollected)
 		{
@@ -85,7 +85,7 @@ void ACollectableKey::OnRep_IsCollected()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Display, TEXT("OnRep_IsCollected called on client"));
+		//UE_LOG(LogTemp, Display, TEXT("OnRep_IsCollected called on client"));
 	}
 
 	Mesh->SetVisibility(!IsCollected);
