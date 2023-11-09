@@ -15,6 +15,7 @@ Content/*
 !Content/ThirdPerson
 !Content/MainMenu
 !Content/GameplayElements
+!Content/Input
 
 /.idea/
 .vscode
