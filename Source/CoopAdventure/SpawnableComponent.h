@@ -23,13 +23,4 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-	UPROPERTY(EditAnywhere)
-	TArray<AActor*> TriggerActors;
-
-	UPROPERTY()
-	FVector SpawnLocation;
-
-	UFUNCTION()
-	void OnTriggerActorActivated();
 };
