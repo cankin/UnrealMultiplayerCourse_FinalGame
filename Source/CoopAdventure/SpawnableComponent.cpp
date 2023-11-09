@@ -8,7 +8,6 @@
 // Sets default values for this component's properties
 USpawnableComponent::USpawnableComponent()
 {
-	SpawnLocation = GetOwner()->GetActorLocation();
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
@@ -21,6 +20,7 @@ USpawnableComponent::USpawnableComponent()
 void USpawnableComponent::BeginPlay()
 {
 	Super::BeginPlay();
+	SpawnLocation = GetOwner()->GetActorLocation();
 
 	for(AActor* TA : TriggerActors)
 	{
@@ -57,8 +57,6 @@ void USpawnableComponent::OnTriggerActorActivated()
 	if(GetOwner()->HasAuthority())
 	{
 		GetOwner()->SetActorEnableCollision(true);
-		GetOwner()->SetActorHiddenInGame(false);
-		GetOwner()->SetActorLocation(SpawnLocation);
 	}
 }
 

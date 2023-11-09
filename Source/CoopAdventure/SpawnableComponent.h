@@ -27,6 +27,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	TArray<AActor*> TriggerActors;
 
+	UPROPERTY()
 	FVector SpawnLocation;
 
 	UFUNCTION()
