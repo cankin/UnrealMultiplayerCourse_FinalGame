@@ -24,7 +24,6 @@ ASpawner::ASpawner()
 	{
 		Mesh->SetStaticMesh(MeshAsset.Object);
 	}
-
 }
 
 // Called when the game starts or when spawned
