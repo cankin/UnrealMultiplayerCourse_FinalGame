@@ -10,6 +10,7 @@ AWinArea::AWinArea()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
 
 	WinAreaBox = CreateDefaultSubobject<UBoxComponent>(TEXT("WinAreaBox"));
 	SetRootComponent(WinAreaBox);
@@ -36,7 +37,7 @@ void AWinArea::Tick(float DeltaTime)
 			TArray<AActor*> OverlappingActors;
 			WinAreaBox->GetOverlappingActors(OverlappingActors, ACoopAdventureCharacter::StaticClass());
 
-			WinCondition = OverlappingActors.Num() == 2;
+			WinCondition = (OverlappingActors.Num() == 2);
 
 			if(WinCondition)
 			{

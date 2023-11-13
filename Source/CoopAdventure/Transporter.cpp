@@ -1,6 +1,7 @@
 #include "Transporter.h"
 #include "CollectableKey.h"
 #include "PressurePlate.h"
+#include "ToggleSwitch.h"
 
 UTransporter::UTransporter()
 {
@@ -38,6 +39,14 @@ void UTransporter::BeginPlay()
 		if(KeyActor)
 		{
 			KeyActor->OnCollected.AddDynamic(this, &UTransporter::OnTriggerActorActivated);
+			continue;
+		}
+
+		AToggleSwitch* ToggleSwitch = Cast<AToggleSwitch>(TA);
+		if(ToggleSwitch)
+		{
+			ToggleSwitch->OnActivated.AddDynamic(this, &UTransporter::OnTriggerActorActivated);
+			ToggleSwitch->OnDeactivated.AddDynamic(this, &UTransporter::OnTriggerActorDeactivated);
 		}
 	}
 }
